@@ -1,0 +1,19 @@
+.heatmap-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* spacing between words */
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.heatmap-word {
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.heatmap-word:hover {
+    opacity: 0.7;
+}

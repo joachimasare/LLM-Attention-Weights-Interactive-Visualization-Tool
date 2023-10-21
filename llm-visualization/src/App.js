@@ -8,23 +8,11 @@ function App() {
   const [wordFrequencies, setWordFrequencies] = useState({});
 
   // Function to update the word frequencies state
-  const updateWordFrequencies = (text) => {
-    const words = text.split(/\W+/);
-    const frequencies = {};
-
-    words.forEach(word => {
-      word = word.toLowerCase();
-      if (!frequencies[word]) {
-        frequencies[word] = 0;
-      }
-      frequencies[word]++;
-    });
-
+  const updateWordFrequencies = (frequencies) => {
     setWordFrequencies(frequencies);
   };
 
   // Log the word frequencies
-    // Correct placement of console.log
   console.log("Word Frequencies:", wordFrequencies);
 
   return (

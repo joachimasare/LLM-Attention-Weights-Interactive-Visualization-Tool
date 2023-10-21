@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const QueryModel = () => {
+const QueryModel = ({ onModelResponse }) => {
     const [prompt, setPrompt] = useState('');
     const [response, setResponse] = useState('');
 
@@ -9,6 +9,10 @@ const QueryModel = () => {
         try {
             const result = await axios.post('http://localhost:3001/ask', { prompt });
             setResponse(result.data.completion);
+            
+            // Update word frequencies in the App component
+            onModelResponse(result.data.wordFrequencies);
+            
         } catch (error) {
             console.error('Error querying model:', error);
         }

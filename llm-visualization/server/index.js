@@ -14,7 +14,7 @@ app.post('/ask', async (req, res) => {
 
     try {
         const response = await axios.post('https://api.openai.com/v1/completions', {
-            model: 'text-davinci-003',  // specify the model here
+            model: 'text-davinci-003',  
             prompt: prompt,
             max_tokens: 150
         }, {

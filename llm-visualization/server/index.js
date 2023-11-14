@@ -19,7 +19,7 @@ app.post('/ask', async (req, res) => {
             max_tokens: 150
         }, {
             headers: {
-                'Authorization': `Bearer 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`
+                'Authorization': `Bearer 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`
             }
         });
         const completion = response.data.choices[0].text.trim();
@@ -55,6 +55,7 @@ function computeWordFrequency(text) {
         }
         wordFrequency[word]++;
     });
+    
 
     return wordFrequency;
 }

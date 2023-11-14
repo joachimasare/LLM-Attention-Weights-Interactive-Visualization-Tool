@@ -55,6 +55,7 @@ function computeWordFrequency(text) {
         }
         wordFrequency[word]++;
     });
+    
 
     return wordFrequency;
 }

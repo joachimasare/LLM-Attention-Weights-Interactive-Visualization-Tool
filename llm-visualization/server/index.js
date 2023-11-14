@@ -19,7 +19,7 @@ app.post('/ask', async (req, res) => {
             max_tokens: 150
         }, {
             headers: {
-                'Authorization': `Bearer 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`
+                'Authorization': `Bearer `
             }
         });
         const completion = response.data.choices[0].text.trim();

@@ -22,12 +22,19 @@ app.post('/ask', async (req, res) => {
                 'Authorization': `Bearer `
             }
         });
-        const completion = response.data.choices[0].text.trim();
-        const wordFrequencies = computeWordFrequency(completion);
         
+        const completion = response.data.choices[0].text.trim();
+
+        // Get word significance from Python backend
+        const significanceResponse = await axios.post('http://localhost:5000/word-significance', {
+            text: completion
+        });
+        
+        const wordSignificance = significanceResponse.data;
+
         res.json({
             completion: completion,
-            wordFrequencies: wordFrequencies
+            wordSignificance: wordSignificance  // Changed this name to reflect word significance based on embeddings
         });
         
     } catch (error) {
@@ -42,6 +49,7 @@ app.post('/ask', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
 
 function computeWordFrequency(text) {

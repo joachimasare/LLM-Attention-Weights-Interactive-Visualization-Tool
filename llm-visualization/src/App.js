@@ -5,28 +5,28 @@ import WordHeatmap from './WordHeatmap';
 
 function App() {
   // Define a state to hold the word frequencies
-  const [wordFrequencies, setWordFrequencies] = useState({});
+  const [wordSignificance, setwordSignificance] = useState({});
 
   // Function to update the word frequencies state
-  const updateWordFrequencies = (frequencies) => {
-    setWordFrequencies(frequencies);
+  const updateWordSignificance = (frequencies) => {
+    setwordSignificance(frequencies);
   };
 
   // Log the word frequencies
-  console.log("Word Frequencies:", wordFrequencies);
+  console.log("Word Frequencies:", wordSignificance);
 
   return (
-        <div className="App">
-            <header className="App-header">
-                <h1>LLM Visualization Tool</h1>
+    <div className="App">
+      <header className="App-header">
+        <h1>LLM Visualization Tool</h1>
                 
-                {/* Pass the updateWordFrequencies function as a prop to QueryModel */}
-                <QueryModel onModelResponse={updateWordFrequencies} />
+        {/* Pass the updateWordSignificance function as a prop to QueryModel */}
+        <QueryModel onModelResponse={updateWordSignificance} />
                 
-                {/* Pass the wordFrequencies state as a prop to WordHeatmap */}
-                <WordHeatmap frequencies={wordFrequencies} />
-            </header>
-        </div>
+        {/* Conditionally render the WordHeatmap component */}
+        {Object.keys(wordSignificance).length > 0 && <WordHeatmap wordSignificance={wordSignificance} />}
+      </header>
+    </div>
   );
 }
 
